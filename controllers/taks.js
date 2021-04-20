@@ -27,3 +27,13 @@ export const addTask = (req, res) => {
       res.send(err);
     });
 };
+
+export const deleteTask = (req, res) => {
+  Task.remove({ _id: req.params.id })
+    .then(() => {
+      res.send("user deleted");
+    })
+    .catch((err) => {
+      console.log(error);
+    });
+};

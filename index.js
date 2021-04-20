@@ -16,7 +16,7 @@ app.use("/farmData", farmRoute);
 app.use("/tasks", tasksRoute);
 
 app.get("/", (req, res) => {
-  res.send("Default Route");
+  res.send("Farm Monitoring System");
 });
 
 try {

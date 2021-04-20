@@ -29,11 +29,11 @@ export const addTask = (req, res) => {
 };
 
 export const deleteTask = (req, res) => {
-  Task.remove({ _id: req.params.id })
+  Task.deleteOne({ _id: req.params.id })
     .then(() => {
-      res.send("user deleted");
+      res.send("Task deleted");
     })
     .catch((err) => {
-      console.log(error);
+      res.send(err);
     });
 };

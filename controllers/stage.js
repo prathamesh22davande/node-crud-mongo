@@ -1,4 +1,5 @@
 import Stage from "../models/Stage.js";
+import Task from "../models/Task.js";
 
 export const getStages = (req, res) => {
   Stage.find({}, function (err, stage) {
@@ -28,12 +29,23 @@ export const addStage = (req, res) => {
     });
 };
 
+export const updateStage = (req, res) => {
+  Stage.updateOne({ stageNo: req.params.stageNo }, { date: req.body.date })
+    .then(() => {
+      res.send("Stage Updated");
+    })
+    .catch(() => {
+      res.send(err);
+    });
+};
+
 export const deleteStage = (req, res) => {
-  Task.deleteOne({ _id: req.params.stageNo })
+  Stage.deleteOne({ stageNo: req.params.stageNo })
     .then(() => {
       res.send("Stage deleted");
     })
     .catch((err) => {
       res.send(err);
+      console.log(err);
     });
 };

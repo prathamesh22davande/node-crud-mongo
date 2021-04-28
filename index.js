@@ -1,10 +1,14 @@
 import express from "express";
 import bodyParser from "body-parser";
 
+import stageRoute from "./routes/stage.js";
 import usersRoute from "./routes/users.js";
 import farmRoute from "./routes/farmData.js";
 import tasksRoute from "./routes/task.js";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +18,7 @@ app.use(bodyParser.json());
 app.use("/users", usersRoute);
 app.use("/farmData", farmRoute);
 app.use("/tasks", tasksRoute);
+app.use("/stage", stageRoute);
 
 app.get("/", (req, res) => {
   res.send("Farm Monitoring System");

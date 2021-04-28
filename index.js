@@ -6,9 +6,6 @@ import usersRoute from "./routes/users.js";
 import farmRoute from "./routes/farmData.js";
 import tasksRoute from "./routes/task.js";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;

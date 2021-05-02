@@ -1,5 +1,18 @@
 import FarmData from "../models/FarmData.js";
 
+export const getDatesData = (req, res) => {
+  const today = Date.parse(req.params.date.substr(0, 10));
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  FarmData.find(
+    { uid: req.params.uid, time: { $gte: today, $lt: tomorrow } },
+    function (err, farmData) {
+      res.send(farmData);
+    }
+  );
+};
+
 export const getFarmData = (req, res) => {
   FarmData.find({ uid: req.params.uid }, function (err, farmData) {
     res.send(farmData);

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
 const farmDataSchema = new schema({
+  uid: { type: String, required: true },
   temperature: { type: String, required: true },
   lightIntensity: { type: String, required: true },
   moisture: { type: String, required: true },

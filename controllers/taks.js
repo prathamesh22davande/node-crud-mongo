@@ -1,13 +1,14 @@
 import Task from "../models/Task.js";
 
 export const getTasks = (req, res) => {
-  Task.find({}, function (err, task) {
+  Task.find({ uid: req.params.uid }, function (err, task) {
     res.send(task);
   });
 };
 
 export const addTask = (req, res) => {
   const newTask = new Task({
+    uid: req.params.uid,
     taskName: req.body.taskName,
     taskDescription: req.body.taskDescription,
     date: req.body.date,

@@ -25,11 +25,8 @@ app.get("/", (req, res) => {
   res.send("Farm Monitoring System");
 });
 
-const MONGO_URI =
-  "mongodb+srv://prathamesh:wKP3SLzKTxRYkX2d@cluster0.4yfrx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
 try {
-  const connection = await mongoose.connect(MONGO_URI, {
+  const connection = await mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

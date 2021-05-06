@@ -4,7 +4,9 @@ import bodyParser from "body-parser";
 import stageRoute from "./routes/stage.js";
 import usersRoute from "./routes/users.js";
 import farmRoute from "./routes/farmData.js";
+import farmRouteNew from "./routes/farmDataNew.js";
 import tasksRoute from "./routes/task.js";
+import reportRoute from "./routes/report.js";
 import mongoose from "mongoose";
 
 const app = express();
@@ -14,8 +16,10 @@ app.use(bodyParser.json());
 
 app.use("/users", usersRoute);
 app.use("/farmData", farmRoute);
+app.use("/farmDataNew", farmRouteNew);
 app.use("/tasks", tasksRoute);
 app.use("/stage", stageRoute);
+app.use("/report", reportRoute);
 
 app.get("/", (req, res) => {
   res.send("Farm Monitoring System");

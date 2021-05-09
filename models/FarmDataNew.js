@@ -3,6 +3,7 @@ const schema = mongoose.Schema;
 
 const farmDataSchemaNew = new schema({
   uid: { type: String, required: true },
+  farmId: { type: String, required: true },
   soilTemperature: { type: String, required: true },
   soilMoisture1: { type: String, required: true },
   soilMoisture2: { type: String, required: true },

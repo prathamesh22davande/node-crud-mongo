@@ -6,7 +6,11 @@ export const getDatesDataNew = (req, res) => {
   tomorrow.setDate(tomorrow.getDate() + 1);
 
   FarmDataNew.find(
-    { uid: req.params.uid, time: { $gte: today, $lt: tomorrow } },
+    {
+      uid: req.params.uid,
+      farmId: req.params.farmId,
+      time: { $gte: today, $lt: tomorrow },
+    },
     function (err, farmData) {
       res.send(farmData);
     }
@@ -14,6 +18,15 @@ export const getDatesDataNew = (req, res) => {
 };
 
 export const getFarmDataNew = (req, res) => {
+  FarmDataNew.find(
+    { uid: req.params.uid, farmId: req.params.farmId },
+    function (err, farmData) {
+      res.send(farmData);
+    }
+  );
+};
+
+export const getAllFarmDataNew = (req, res) => {
   FarmDataNew.find({ uid: req.params.uid }, function (err, farmData) {
     res.send(farmData);
   });
@@ -22,6 +35,7 @@ export const getFarmDataNew = (req, res) => {
 export const addFarmDataNew = (req, res) => {
   const newFarmDataNew = new FarmDataNew({
     uid: req.params.uid,
+    farmId: req.params.farmId,
     soilTemperature: req.body.soilTemperature,
     soilMoisture1: req.body.soilMoisture1,
     soilMoisture2: req.body.soilMoisture2,

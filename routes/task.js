@@ -4,9 +4,9 @@ import { getTasks, addTask, deleteTask } from "../controllers/taks.js";
 
 const router = express.Router();
 
-router.get("/:uid", getTasks);
+router.get("/:uid/:farmId", getTasks);
 
-router.post("/:uid", addTask);
+router.post("/:uid/:farmId", addTask);
 
 router.delete("/:id", deleteTask);
 

@@ -9,12 +9,12 @@ import {
 
 const router = express.Router();
 
-router.get("/:uid", getStages);
+router.get("/:uid/:farmId", getStages);
 
 router.post("/:uid", addStage);
 
-router.patch("/:uid/:stageNo", updateStage);
+router.patch("/:uid/:farmId/:stageNo", updateStage);
 
-router.delete("/:uid/:stageNo", deleteStage);
+router.delete("/:uid/:farmId/:stageNo", deleteStage);
 
 export default router;

@@ -2,9 +2,18 @@ import Stage from "../models/Stage.js";
 import Task from "../models/Task.js";
 
 export const getStages = (req, res) => {
-  Stage.find({ uid: req.params.uid }, function (err, stage) {
-    res.send(stage);
-  });
+  Stage.find(
+    { uid: req.params.uid, farmId: req.params.farmId }
+    // function (err, stage) {
+    //   res.send(stage);
+    // }
+  )
+    .then((document) => {
+      res.send(document);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 };
 
 export const addStage = (req, res) => {
@@ -32,7 +41,11 @@ export const addStage = (req, res) => {
 
 export const updateStage = (req, res) => {
   Stage.updateOne(
-    { uid: req.params.uid, stageNo: req.params.stageNo },
+    {
+      uid: req.params.uid,
+      farmId: req.params.farmId,
+      stageNo: req.params.stageNo,
+    },
     { date: req.body.date }
   )
     .then(() => {
@@ -44,7 +57,11 @@ export const updateStage = (req, res) => {
 };
 
 export const deleteStage = (req, res) => {
-  Stage.deleteOne({ uid: req.params.uid, stageNo: req.params.stageNo })
+  Stage.deleteOne({
+    uid: req.params.uid,
+    farmId: req.params.farmId,
+    stageNo: req.params.stageNo,
+  })
     .then(() => {
       res.send("Stage deleted");
     })

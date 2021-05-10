@@ -1,4 +1,5 @@
 import Farm from "../models/Farm.js";
+import Stage from "../models/Stage.js";
 
 export const getFarm = (req, res) => {
   if (req.params.farmId == "true") {
@@ -43,7 +44,108 @@ export const addFarm = (req, res) => {
   newFarm
     .save()
     .then((document) => {
-      console.log("data inserted");
+      console.log(document);
+      const arr = [
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "1",
+          stageName: "Foundation Pruning",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "2",
+          stageName: "Breaking Bud",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "3",
+          stageName: "Shoot Development",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "4",
+          stageName: "Subcane",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "5",
+          stageName: "Cane Maturity",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "6",
+          stageName: "Fruit Pruning",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "7",
+          stageName: "Breaking Bud",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "8",
+          stageName: "Shoot Development",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "9",
+          stageName: "Begining of Bloom",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "10",
+          stageName: "Fruit Set",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "11",
+          stageName: "Berry Development",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "12",
+          stageName: "Begining Verasion",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+        {
+          uid: document.uid,
+          farmId: document._id,
+          stageNo: "13",
+          stageName: "Harvest",
+          date: "2000-03-02T17:30:00.000Z",
+        },
+      ];
+      //Add Stages with default date
+      Stage.insertMany(arr)
+        .then((res) => {})
+        .catch((err) => {
+          res.send(err);
+          return;
+        });
+
       res.json({
         state: true,
         msg: "data inserted successully",

@@ -4,6 +4,7 @@ const schema = mongoose.Schema;
 
 const farmSchema = new schema({
   uid: { type: String, required: true },
+  isSelected: { type: Boolean, default: false },
   farmName: { type: String, required: true },
   longitude: { type: String, required: true },
   latitude: { type: String, required: true },

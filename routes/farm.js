@@ -5,6 +5,7 @@ import {
   addFarm,
   deleteFarm,
   getUserFarms,
+  setIsSelected,
 } from "../controllers/farm.js";
 
 const router = express.Router();
@@ -20,5 +21,8 @@ router.post("/:uid", addFarm);
 
 //Delete the Farm
 router.delete("/:farmId", deleteFarm);
+
+//Set iSselected
+router.put("/:uid/:farmId/:isSet", setIsSelected);
 
 export default router;

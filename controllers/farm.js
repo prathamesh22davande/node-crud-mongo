@@ -2,8 +2,8 @@ import Farm from "../models/Farm.js";
 import Stage from "../models/Stage.js";
 
 export const getFarm = (req, res) => {
-  if (req.params.farmId == "true" || req.params.farmId == "false") {
-    Farm.findOne({ uid: req.params.uid, isSelected: req.params.farmId })
+  if (req.params.farmId == "true") {
+    Farm.findOne({ uid: req.params.uid, isSelected: true })
       .then((farm) => {
         res.send(farm._id);
       })

@@ -24,6 +24,7 @@ export const addUser = (req, res) => {
   const newUser = new User({
     uid: req.body.uid,
     name: req.body.name,
+    mobile: req.body.mobile,
     email: req.body.email,
     dob: req.body.dob,
   });
